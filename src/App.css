@@ -1,0 +1,19 @@
+.app {
+  min-block-size: 100vh;
+  padding: 2rem;
+  background: linear-gradient(180deg, #fef2f1 0%, #ffd9d0 60%, #ffeaea 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app h1 {
+  text-align: center;
+  margin: 0 0 2rem;
+  background-color: lightcoral;
+  color: bisque;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}

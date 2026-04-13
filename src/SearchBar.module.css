@@ -1,0 +1,78 @@
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-end: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-inline-size: 800px;
+  inline-size: 100%;
+}
+
+.searchInputs {
+  display: flex;
+  gap: 1rem;
+  margin-block-end: 1rem;
+  inline-size: 100%;
+  justify-content: center;
+}
+
+.searchTerm,
+.searchLocation {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  min-inline-size: 200px;
+}
+
+.searchTerm:focus,
+.searchLocation:focus {
+  outline: none;
+  border-color: lightcoral;
+}
+
+.searchButton {
+  padding: 0.75rem 1.5rem;
+  background-color: lightcoral;
+  color: bisque;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.searchButton:hover {
+  background-color: #d2691e;
+}
+
+.searchFilters {
+  inline-size: 100%;
+}
+
+.filterOptions {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.filterOptions div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterOptions input[type="radio"] {
+  margin: 0;
+}
+
+.filterOptions label {
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+}
