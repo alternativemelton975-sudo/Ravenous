@@ -1,74 +1,64 @@
-import styles from './SearchBar.module.css'
 import { useState } from 'react'
+import './SearchBar.css'
 
 function SearchBar({ onSearch, onSortChange }) {
   const [term, setTerm] = useState('')
-  const [sortBy, setSortBy] = useState('best_match')
 
-  function handleSortChange(e) {
-    const value = e.target.value
-    setSortBy(value)
-    onSortChange(value)
+  function handleInputChange(e) {
+    setTerm(e.target.value)
   }
 
-  function handleSearch() {
+  function handleSearchClick() {
     onSearch(term)
   }
 
+  function handleSort(option) {
+    onSortChange(option)
+  }
+
   return (
-    <div className={styles.searchBar}>
-      <div className={styles.searchInputs}>
+    <div className="search-bar">
+      <div className="search-input">
         <input
           type="text"
-          placeholder="Search restaurants"
-          className={styles.searchTerm}
+          placeholder="Search businesses..."
           value={term}
-          onChange={(e) => setTerm(e.target.value)}
+          onChange={handleInputChange}
         />
-
-        <button className={styles.searchButton} onClick={handleSearch}>
-          Search
-        </button>
+        <button onClick={handleSearchClick}>Search</button>
       </div>
 
-      <div className={styles.searchFilters}>
-        <div className={styles.filterOptions}>
-          <div>
-            <input
-              type="radio"
-              id="best-match"
-              name="sortBy"
-              value="best_match"
-              checked={sortBy === 'best_match'}
-              onChange={handleSortChange}
-            />
-            <label htmlFor="best-match">Best Match</label>
-          </div>
+      <div className="sort-options">
+        <label>
+          <input
+            type="radio"
+            name="sort"
+            value="best_match"
+            onChange={() => handleSort('best_match')}
+            defaultChecked
+          />
+          Best Match
+        </label>
 
-          <div>
-            <input
-              type="radio"
-              id="highest-rated"
-              name="sortBy"
-              value="rating"
-              checked={sortBy === 'rating'}
-              onChange={handleSortChange}
-            />
-            <label htmlFor="highest-rated">Highest Rated</label>
-          </div>
+        <label>
+          <input
+            type="radio"
+            name="sort"
+            value="rating"
+            onChange={() => handleSort('rating')}
+          />
+          Highest Rated
+        </label>
 
-          <div>
-            <input
-              type="radio"
-              id="most-reviewed"
-              name="sortBy"
-              value="review_count"
-              checked={sortBy === 'review_count'}
-              onChange={handleSortChange}
-            />
-            <label htmlFor="most-reviewed">Most Reviewed</label>
-          </div>
-        </div>
+        <label>
+          <input
+            type="radio"
+            name="sort"
+            value="review_count"
+            onChange={() => handleSort('review_count')}
+          />
+          Most Reviewed
+        </label>
       </div>
     </div>
   )
