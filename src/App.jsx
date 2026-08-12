@@ -1,51 +1,34 @@
-import BusinessList from './BusinessList'
-import SearchBar from './SearchBar'
-import './App.css'
+import styles from './Business.module.css';
 
-function App() {
-  const businesses = [
-    {
-      imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-      name: 'MarginOtto Pizzeria',
-      address: '1010 Paddington Way',
-      city: 'Flavortown',
-      state: 'NY',
-      zipCode: '10101',
-      category: 'Italian',
-      rating: 4.5,
-      reviewCount: 90
-    },
-    {
-      imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-      name: 'Another Cafe',
-      address: '2020 Cafe St',
-      city: 'Coffeetown',
-      state: 'CA',
-      zipCode: '90210',
-      category: 'Cafe',
-      rating: 4.0,
-      reviewCount: 45
-    },
-    {
-      imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-      name: 'Third Place',
-      address: '3030 Third Ave',
-      city: 'Thirdcity',
-      state: 'TX',
-      zipCode: '30303',
-      category: 'Restaurant',
-      rating: 3.5,
-      reviewCount: 67
-    }
-  ]
-
+function Business({ business }) {
   return (
-    <main className="app">
-      <h1>RAVENOUS CAFE</h1>
-      <SearchBar />
-      <BusinessList businesses={businesses} />
-    </main>
-  )
+    <div className={styles.business}>
+      <div className={styles.businessImage}>
+        <img
+          src={business.imageSrc}
+          alt={business.name}
+        />
+      </div>
+
+      <div className={styles.businessInfo}>
+        <h3>{business.name}</h3>
+
+        <div className={styles.businessAddress}>
+          <p>{business.address}</p>
+          <p>{business.city}</p>
+          <p>{business.state} {business.zipCode}</p>
+        </div>
+
+        <div className={styles.businessReviews}>
+          <div className={styles.businessRating}>
+            <p>{business.category}</p>
+            <p>{business.rating} stars</p>
+          </div>
+          <p>{business.reviewCount} reviews</p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default Business;
