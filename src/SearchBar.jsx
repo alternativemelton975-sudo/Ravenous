@@ -8,6 +8,7 @@ function SearchBar() {
         <input type="text" placeholder="Where?" className={styles.searchLocation} />
         <button className={styles.searchButton}>Let's Go</button>
       </div>
+
       <div className={styles.searchFilters}>
         <div className={styles.filterOptions}>
           <div>
