@@ -52,6 +52,7 @@ function App() {
   const sortedBusinesses = [...filteredBusinesses].sort((a, b) => {
     if (sortBy === 'rating') return b.rating - a.rating
     if (sortBy === 'review_count') return b.reviewCount - a.reviewCount
+    if (sortBy === 'best_match') return a.name.localeCompare(b.name)
     return 0
   })
 
