@@ -3,24 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ravenous</title>
+  <title>Ravenous Café</title>
 
   <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff5f2;
+      color: #333;
+      text-align: center;
+      margin: 0;
+    }
+
+    .app {
+      padding: 2rem;
+      background: linear-gradient(180deg, #fef2f1 0%, #ffd9d0 60%, #ffeaea 100%);
+      min-height: 100vh;
+    }
+
+    h1 {
+      background-color: lightcoral;
+      color: bisque;
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      display: inline-block;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    /* Search Bar */
+    .searchBar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+      margin-inline: auto;
+    }
+
+    .searchInputs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .searchInputs input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      min-width: 200px;
+    }
+
+    .searchButton {
+      padding: 0.75rem 1.5rem;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .searchButton:hover {
+      background-color: #ff3b3b;
+      transform: scale(1.05);
+    }
+
+    /* Business Cards */
+    .businessList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+    }
+
     .business {
       display: flex;
       flex-direction: column;
-      inline-size: 300px;
-      margin: 1rem;
-      border: 1px solid #ddd;
+      width: 300px;
+      background: white;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      background: white;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .businessImage img {
-      inline-size: 100%;
-      block-size: 200px;
+      width: 100%;
+      height: 200px;
       object-fit: cover;
     }
 
@@ -34,23 +116,24 @@
       color: #666;
     }
 
-    .businessList {
+    .businessReviews {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      padding: 2rem;
+      justify-content: space-between;
+      margin-top: 1rem;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fff5f2;
-      color: #333;
-      text-align: center;
+    .businessRating p {
+      margin: 0;
+      font-size: 0.9rem;
     }
 
-    .app {
-      padding: 2rem;
+    .businessRating p:first-child {
+      font-weight: bold;
+      color: #b33a3a;
+    }
+
+    .businessRating p:last-child {
+      color: #f39c12;
     }
   </style>
 </head>
@@ -59,8 +142,19 @@
   <main class="app">
     <h1>RAVENOUS CAFE</h1>
 
+    <!-- Search Bar -->
+    <div class="searchBar">
+      <div class="searchInputs">
+        <input type="text" placeholder="Search businesses" />
+        <input type="text" placeholder="Where?" />
+        <button class="searchButton">Let's Go</button>
+      </div>
+    </div>
+
+    <!-- Business List -->
     <div class="businessList">
 
+      <!-- Business 1 -->
       <div class="business">
         <div class="businessImage">
           <img src="https://content.codecademy.com/programs/react/ravenous/pizza.jpg" alt="MarginOtto Pizzeria" />
@@ -82,6 +176,7 @@
         </div>
       </div>
 
+      <!-- Business 2 -->
       <div class="business">
         <div class="businessImage">
           <img src="https://content.codecademy.com/programs/react/ravenous/pizza.jpg" alt="Another Cafe" />
@@ -103,6 +198,7 @@
         </div>
       </div>
 
+      <!-- Business 3 -->
       <div class="business">
         <div class="businessImage">
           <img src="https://content.codecademy.com/programs/react/ravenous/pizza.jpg" alt="Third Place" />
@@ -123,6 +219,77 @@
           </div>
         </div>
       </div>
+
+      <!-- Business 4 -->
+      <div class="business">
+        <div class="businessImage">
+          <img src="https://content.codecademy.com/programs/react/ravenous/pizza.jpg" alt="Sunrise Bakery" />
+        </div>
+        <div class="businessInfo">
+          <h3>Sunrise Bakery</h3>
+          <div class="businessAddress">
+            <p>4040 Bread Lane</p>
+            <p>Doughville</p>
+            <p>FL 33160</p>
+          </div>
+          <div class="businessReviews">
+            <div class="businessRating">
+              <p>Bakery</p>
+              <p>4.8 stars</p>
+            </div>
+            <p>120 reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business 5 -->
+      <div class="business">
+        <div class="businessImage">
+          <img src="https://content.codecademy.com/programs/react/ravenous/pizza.jpg" alt="Green Leaf Deli" />
+        </div>
+        <div class="businessInfo">
+          <h3>Green Leaf Deli</h3>
+          <div class="businessAddress">
+            <p>5050 Salad Street</p>
+            <p>VeggieTown</p>
+            <p>WA 98101</p>
+          </div>
+          <div class="businessReviews">
+            <div class="businessRating">
+              <p>Deli</p>
+              <p>4.2 stars</p>
+            </div>
+            <p>75 reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business 6 -->
+      <div class="business">
+        <div class="businessImage">
+          <img src="https://content.codecademy.com/programs/react/ravenous/pizza.jpg" alt="Spice Route Grill" />
+        </div>
+        <div class="businessInfo">
+          <h3>Spice Route Grill</h3>
+          <div class="businessAddress">
+            <p>6060 Curry Blvd</p>
+            <p>HeatCity</p>
+            <p>AZ 85001</p>
+          </div>
+          <div class="businessReviews">
+            <div class="businessRating">
+              <p>Indian</p>
+              <p>4.7 stars</p>
+            </div>
+            <p>150 reviews</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
 
     </div>
   </main>
