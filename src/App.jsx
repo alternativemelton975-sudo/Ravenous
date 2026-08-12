@@ -5,6 +5,7 @@ import './App.css'
 
 function App() {
   const [sortBy, setSortBy] = useState('best_match')
+  const [searchTerm, setSearchTerm] = useState('')
 
   const businesses = [
     {
@@ -39,56 +40,27 @@ function App() {
       category: 'Restaurant',
       rating: 3.5,
       reviewCount: 67
-    },
-    {
-      imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-      name: 'Sunrise Bakery',
-      address: '4040 Bread Lane',
-      city: 'Doughville',
-      state: 'FL',
-      zipCode: '33160',
-      category: 'Bakery',
-      rating: 4.8,
-      reviewCount: 120
-    },
-    {
-      imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-      name: 'Green Leaf Deli',
-      address: '5050 Salad Street',
-      city: 'VeggieTown',
-      state: 'WA',
-      zipCode: '98101',
-      category: 'Deli',
-      rating: 4.2,
-      reviewCount: 75
-    },
-    {
-      imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-      name: 'Spice Route Grill',
-      address: '6060 Curry Blvd',
-      city: 'HeatCity',
-      state: 'AZ',
-      zipCode: '85001',
-      category: 'Indian',
-      rating: 4.7,
-      reviewCount: 150
     }
   ]
 
-  // Sorting logic
-  const sortedBusinesses = [...businesses].sort((a, b) => {
+  // 🔍 FILTER businesses by name
+  const filteredBusinesses = businesses.filter(b =>
+    b.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
+  // 🔽 SORT filtered businesses
+  const sortedBusinesses = [...filteredBusinesses].sort((a, b) => {
     if (sortBy === 'rating') return b.rating - a.rating
     if (sortBy === 'review_count') return b.reviewCount - a.reviewCount
-    return 0 // best_match = original order
+    return 0
   })
 
-  function handleSortChange(sortOption) {
-    setSortBy(sortOption)
+  function handleSortChange(option) {
+    setSortBy(option)
   }
 
-  function handleSearch(term, location) {
-    console.log('Search term:', term)
-    console.log('Location:', location)
+  function handleSearch(term) {
+    setSearchTerm(term)
   }
 
   return (
@@ -101,4 +73,3 @@ function App() {
 }
 
 export default App
-
