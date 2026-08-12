@@ -75,3 +75,4 @@ function SearchBar({ onSearch, onSortChange }) {
 }
 
 export default SearchBar
+
