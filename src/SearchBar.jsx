@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 function SearchBar({ onSearch, onSortChange }) {
   const [term, setTerm] = useState('')
-  const [location, setLocation] = useState('')
   const [sortBy, setSortBy] = useState('best_match')
 
   function handleSortChange(e) {
@@ -13,7 +12,7 @@ function SearchBar({ onSearch, onSortChange }) {
   }
 
   function handleSearch() {
-    onSearch(term, location)
+    onSearch(term)
   }
 
   return (
@@ -21,22 +20,14 @@ function SearchBar({ onSearch, onSortChange }) {
       <div className={styles.searchInputs}>
         <input
           type="text"
-          placeholder="Search businesses"
+          placeholder="Search restaurants"
           className={styles.searchTerm}
           value={term}
           onChange={(e) => setTerm(e.target.value)}
         />
 
-        <input
-          type="text"
-          placeholder="Where?"
-          className={styles.searchLocation}
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-
         <button className={styles.searchButton} onClick={handleSearch}>
-          Let's Go
+          Search
         </button>
       </div>
 
