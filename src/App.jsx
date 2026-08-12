@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import BusinessList from './BusinessList'
 import SearchBar from './SearchBar'
 import './App.css'
 
 function App() {
+  const [sortBy, setSortBy] = useState('best_match')
+
   const businesses = [
     {
       imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
@@ -72,19 +75,30 @@ function App() {
     }
   ]
 
+  // Sorting logic
+  const sortedBusinesses = [...businesses].sort((a, b) => {
+    if (sortBy === 'rating') return b.rating - a.rating
+    if (sortBy === 'review_count') return b.reviewCount - a.reviewCount
+    return 0 // best_match = original order
+  })
+
+  function handleSortChange(sortOption) {
+    setSortBy(sortOption)
+  }
+
+  function handleSearch(term, location) {
+    console.log('Search term:', term)
+    console.log('Location:', location)
+  }
+
   return (
     <main className="app">
       <h1>RAVENOUS CAFE</h1>
-      <SearchBar />
-      <BusinessList businesses={businesses} />
+      <SearchBar onSearch={handleSearch} onSortChange={handleSortChange} />
+      <BusinessList businesses={sortedBusinesses} />
     </main>
   )
 }
 
 export default App
 
-
-  );
-}
-
-export default Business;
